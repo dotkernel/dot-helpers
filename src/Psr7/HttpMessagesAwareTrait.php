@@ -23,7 +23,7 @@ trait HttpMessagesAwareTrait
     /**
      * @return ServerRequestInterface
      */
-    public function getRequest()
+    public function getServerRequest()
     {
         return $this->request;
     }
@@ -32,7 +32,7 @@ trait HttpMessagesAwareTrait
      * @param ServerRequestInterface $request
      * @return HttpMessagesAwareTrait
      */
-    public function setRequest($request)
+    public function setServerRequest(ServerRequestInterface $request)
     {
         $this->request = $request;
         return $this;
@@ -50,7 +50,7 @@ trait HttpMessagesAwareTrait
      * @param ResponseInterface $response
      * @return HttpMessagesAwareTrait
      */
-    public function setResponse($response)
+    public function setResponse(ResponseInterface $response)
     {
         $this->response = $response;
         return $this;
