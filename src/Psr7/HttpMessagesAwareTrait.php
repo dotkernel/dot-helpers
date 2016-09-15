@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: n3vrax
- * Date: 9/14/2016
- * Time: 11:17 PM
+ * @copyright: DotKernel
+ * @library: dotkernel/dot-helpers
+ * @author: n3vrax
+ * Date: 9/6/2016
+ * Time: 7:49 PM
  */
 
 namespace Dot\Helpers\Psr7;
@@ -12,6 +13,10 @@ namespace Dot\Helpers\Psr7;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Class HttpMessagesAwareTrait
+ * @package Dot\Helpers\Psr7
+ */
 trait HttpMessagesAwareTrait
 {
     /** @var  ServerRequestInterface */
