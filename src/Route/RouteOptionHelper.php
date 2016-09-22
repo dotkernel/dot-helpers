@@ -75,4 +75,24 @@ class RouteOptionHelper
 
         return null;
     }
+
+    /**
+     * @return UrlHelper
+     */
+    public function getUrlHelper()
+    {
+        return $this->urlHelper;
+    }
+
+    /**
+     * @param UrlHelper $urlHelper
+     * @return RouteOptionHelper
+     */
+    public function setUrlHelper($urlHelper)
+    {
+        $this->urlHelper = $urlHelper;
+        return $this;
+    }
+
+    
 }
