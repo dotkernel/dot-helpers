@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: n3vrax
- * Date: 9/22/2016
- * Time: 6:59 PM
+ * @copyright: DotKernel
+ * @library: dotkernel/dot-helpers
+ * @author: n3vrax
+ * Date: 9/6/2016
+ * Time: 7:49 PM
  */
 
 namespace Dot\Helpers\Factory;
