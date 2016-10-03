@@ -8,17 +8,17 @@
 
 namespace Dot\Helpers\Route;
 
-use Zend\Diactoros\Uri;
+use Psr\Http\Message\UriInterface;
 
 trait RedirectParamAppendTrait
 {
     /**
-     * @param Uri $uri
-     * @param Uri $wantedUri
+     * @param UriInterface $uri
+     * @param UriInterface $wantedUri
      * @param string $paramName
-     * @return Uri|static
+     * @return UriInterface|static
      */
-    public function appendWantedUrl(Uri $uri, Uri $wantedUri, $paramName = 'redirect')
+    public function appendWantedUrl(UriInterface $uri, UriInterface $wantedUri, $paramName = 'redirect')
     {
         $query = $uri->getQuery();
         $arr = [];
