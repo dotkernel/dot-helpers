@@ -95,5 +95,4 @@ class RouteOptionHelper
         return $this;
     }
 
-
 }
