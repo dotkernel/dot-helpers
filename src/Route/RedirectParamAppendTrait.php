@@ -22,15 +22,15 @@ trait RedirectParamAppendTrait
     {
         $query = $uri->getQuery();
         $arr = [];
-            if (!empty($query)) {
-                parse_str($query, $arr);
-            }
+        if (!empty($query)) {
+            parse_str($query, $arr);
+        }
 
-            $query = http_build_query(
-                array_merge($arr, [$paramName => urlencode($wantedUri)])
-            );
+        $query = http_build_query(
+            array_merge($arr, [$paramName => urlencode($wantedUri)])
+        );
 
-            $uri = $uri->withQuery($query);
-            return $uri;
+        $uri = $uri->withQuery($query);
+        return $uri;
     }
 }
