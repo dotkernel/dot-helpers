@@ -10,27 +10,27 @@ namespace Dot\Helpers\Route;
 
 use Psr\Http\Message\UriInterface;
 
-trait RedirectParamAppendTrait
+trait UriHelperTrait
 {
     /**
-     * @param UriInterface $uri
-     * @param UriInterface $wantedUri
+     * @param UriInterface $toUri
+     * @param mixed $param
      * @param string $paramName
      * @return UriInterface|static
      */
-    public function appendWantedUrl(UriInterface $uri, UriInterface $wantedUri, $paramName = 'redirect')
+    public function appendQueryParam(UriInterface $toUri, $param, $paramName)
     {
-        $query = $uri->getQuery();
+        $query = $toUri->getQuery();
         $arr = [];
         if (!empty($query)) {
             parse_str($query, $arr);
         }
 
         $query = http_build_query(
-            array_merge($arr, [$paramName => urlencode($wantedUri)])
+            array_merge($arr, [$paramName => urlencode($param)])
         );
 
-        $uri = $uri->withQuery($query);
+        $uri = $toUri->withQuery($query);
         return $uri;
     }
 }
