@@ -27,7 +27,7 @@
         {{ formSubmit(element) }}
 
     {% elseif element is Fieldset %}
-        {% include '@dot-user/form.html.twig' with {'form' : element, 'showLabels' : showLabels} only %}
+        {% include '@dot-form/form.html.twig' with {'form' : element, 'showLabels' : showLabels} only %}
 
     {% else %}
         <div class="form-group {% if element.getMessages() %}has-error{% endif %}">
