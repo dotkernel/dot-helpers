@@ -12,6 +12,7 @@ namespace Dot\Helpers\Factory;
 
 use Dot\Helpers\Route\RouteOptionHelper;
 use Interop\Container\ContainerInterface;
+use Zend\Expressive\Helper\ServerUrlHelper;
 use Zend\Expressive\Helper\UrlHelper;
 
 /**
@@ -27,6 +28,7 @@ class RouteOptionHelperFactory
     public function __invoke(ContainerInterface $container)
     {
         $urlHelper = $container->get(UrlHelper::class);
-        return new RouteOptionHelper($urlHelper);
+        $serverUrlHelper = $container->get(ServerUrlHelper::class);
+        return new RouteOptionHelper($urlHelper, $serverUrlHelper);
     }
 }

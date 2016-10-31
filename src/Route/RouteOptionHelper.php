@@ -10,7 +10,9 @@
 namespace Dot\Helpers\Route;
 
 
+use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Uri;
+use Zend\Expressive\Helper\ServerUrlHelper;
 use Zend\Expressive\Helper\UrlHelper;
 
 /**
@@ -22,18 +24,23 @@ class RouteOptionHelper
     /** @var  UrlHelper */
     protected $urlHelper;
 
+    /** @var  ServerUrlHelper */
+    protected $serverUrlHelper;
+
     /**
      * RouteOptionHelper constructor.
      * @param UrlHelper $urlHelper
+     * @param ServerUrlHelper $serverUrlHelper
      */
-    public function __construct(UrlHelper $urlHelper)
+    public function __construct(UrlHelper $urlHelper, ServerUrlHelper $serverUrlHelper)
     {
         $this->urlHelper = $urlHelper;
+        $this->serverUrlHelper = $serverUrlHelper;
     }
 
     /**
      * @param $route
-     * @return Uri|static
+     * @return UriInterface
      */
     public function getUri($route)
     {
@@ -51,7 +58,7 @@ class RouteOptionHelper
             throw new \RuntimeException('Invalid route option');
         }
 
-        $uri = new Uri($this->urlHelper->generate($routeName, $params));
+        $uri = new Uri($this->serverUrlHelper->generate($this->urlHelper->generate($routeName, $params)));
         if (!empty($queryParams)) {
             $query = http_build_query($queryParams);
             $uri = $uri->withQuery($query);
@@ -91,6 +98,24 @@ class RouteOptionHelper
     public function setUrlHelper($urlHelper)
     {
         $this->urlHelper = $urlHelper;
+        return $this;
+    }
+
+    /**
+     * @return ServerUrlHelper
+     */
+    public function getServerUrlHelper()
+    {
+        return $this->serverUrlHelper;
+    }
+
+    /**
+     * @param ServerUrlHelper $serverUrlHelper
+     * @return RouteOptionHelper
+     */
+    public function setServerUrlHelper($serverUrlHelper)
+    {
+        $this->serverUrlHelper = $serverUrlHelper;
         return $this;
     }
 
