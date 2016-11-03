@@ -16,7 +16,7 @@ trait UriHelperTrait
      * @param UriInterface $toUri
      * @param mixed $param
      * @param string $paramName
-     * @return UriInterface|static
+     * @return UriInterface
      */
     public function appendQueryParam(UriInterface $toUri, $param, $paramName)
     {
