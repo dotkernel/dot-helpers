@@ -1,5 +1,5 @@
 {% set classes = {'error': 'danger', 'info': 'info', 'warning': 'warning', 'success' : 'success'} %}
-{% if dismissable not defined %}
+{% if dismissable is not defined %}
     {% set dismissable = false %}
 {% endif %}
 
