@@ -9,10 +9,13 @@
 
 namespace Dot\Helpers;
 
-
 use Interop\Container\ContainerInterface;
 
-class DependencyHelperTrait
+/**
+ * Trait DependencyHelperTrait
+ * @package Dot\Helpers
+ */
+trait DependencyHelperTrait
 {
     public function getDependencyObject(ContainerInterface $container, $name)
     {
