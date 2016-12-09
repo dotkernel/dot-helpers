@@ -18,6 +18,9 @@
             </label>
         </div>
 
+    {% elseif element is Hidden %}
+        {{ formElement(element) }}
+
     {% elseif element is Button and element.getName() != 'submit' %}
         {% set dummy = element.setAttribute('class', 'btn btn-block') %}
         {{ formButton(element) }}
