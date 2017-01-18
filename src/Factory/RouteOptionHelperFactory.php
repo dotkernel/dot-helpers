@@ -9,7 +9,6 @@
 
 namespace Dot\Helpers\Factory;
 
-
 use Dot\Helpers\Route\RouteOptionHelper;
 use Interop\Container\ContainerInterface;
 use Zend\Expressive\Helper\ServerUrlHelper;

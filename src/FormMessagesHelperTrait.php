@@ -33,8 +33,7 @@ trait FormMessagesHelperTrait
                         $messages = array_merge($messages, $this->getFormMessages($m));
                     }
                 }
-            }
-            elseif (is_string($message)) {
+            } elseif (is_string($message)) {
                 $messages[] = $message;
             }
         }
@@ -52,22 +51,19 @@ trait FormMessagesHelperTrait
     {
         $errors = [];
         foreach ($formMessages as $key => $message) {
-            if(is_array($message)) {
-
-                if(!isset($errors[$key])) {
+            if (is_array($message)) {
+                if (!isset($errors[$key])) {
                     $errors[$key] = array();
                 }
 
                 foreach ($message as $k => $m) {
-                    if(is_string($m)) {
+                    if (is_string($m)) {
                         $errors[$key][] = $m;
-                    }
-                    elseif (is_array($m)) {
+                    } elseif (is_array($m)) {
                         $errors[$key][$k] = $this->getFormErrors($m);
                     }
                 }
-            }
-            elseif (is_string($message)) {
+            } elseif (is_string($message)) {
                 $errors[] = $message;
             }
         }

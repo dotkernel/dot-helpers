@@ -9,7 +9,6 @@
 
 namespace Dot\Helpers\Route;
 
-
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Uri;
 use Zend\Expressive\Helper\ServerUrlHelper;
@@ -39,45 +38,74 @@ class RouteOptionHelper
     }
 
     /**
-     * @param $route
+     * @param $routeOption
+     * @param bool $absoluteUri
      * @return UriInterface
      */
-    public function getUri($route)
+    public function getUri($routeOption, $absoluteUri = true)
     {
-        $params = [];
+        $routeName = null;
+        $routeParams = [];
         $queryParams = [];
-        if (is_string($route)) {
-            $routeName = $route;
-        } elseif (is_array($route)) {
-            $routeName = isset($route['name']) ? $route['name'] : null;
-            $params = isset($route['params']) ? $route['params'] : [];
-            $queryParams = isset($route['query_params']) ? $route['query_params'] : [];
+        $fragmentIdentifier = null;
+        $options = [];
+        if (is_string($routeOption)) {
+            $routeName = $routeOption;
+        } elseif (is_array($routeOption)) {
+            $routeName = isset($routeOption['route_name']) ? $routeOption['route_name'] : null;
+            $routeParams = isset($routeOption['route_params']) ? $routeOption['route_params'] : [];
+            $queryParams = isset($routeOption['query_params']) ? $routeOption['query_params'] : [];
+
+            $fragmentIdentifier = isset($routeOption['fragment_identifier'])
+                ? $routeOption['fragment_identifier']
+                : null;
+
+            $options = isset($routeOption['options']) && is_array($routeOption['options'])
+                ? $routeOption['options']
+                : [];
         }
 
         if (empty($routeName) || !is_string($routeName)) {
-            throw new \RuntimeException('Invalid route option');
+            throw new \RuntimeException('Invalid route name option');
         }
 
-        $uri = new Uri($this->serverUrlHelper->generate($this->urlHelper->generate($routeName, $params)));
-        if (!empty($queryParams)) {
-            $query = http_build_query($queryParams);
-            $uri = $uri->withQuery($query);
+        if ($absoluteUri) {
+            $uri = new Uri(
+                $this->serverUrlHelper->generate(
+                    $this->urlHelper->generate(
+                        $routeName,
+                        $routeParams,
+                        $queryParams,
+                        $fragmentIdentifier,
+                        $options
+                    )
+                )
+            );
+        } else {
+            $uri = new Uri(
+                $this->urlHelper->generate(
+                    $routeName,
+                    $routeParams,
+                    $queryParams,
+                    $fragmentIdentifier,
+                    $options
+                )
+            );
         }
 
         return $uri;
-
     }
 
     /**
-     * @param $route
+     * @param $routeOption
      * @return mixed|null
      */
-    public function getRouteName($route)
+    public function getRouteName($routeOption)
     {
-        if (is_string($route)) {
-            return $route;
-        } elseif (is_array($route)) {
-            return isset($route['name']) ? $route['name'] : null;
+        if (is_string($routeOption)) {
+            return $routeOption;
+        } elseif (is_array($routeOption)) {
+            return isset($routeOption['route_name']) ? $routeOption['route_name'] : null;
         }
 
         return null;
@@ -118,5 +146,4 @@ class RouteOptionHelper
         $this->serverUrlHelper = $serverUrlHelper;
         return $this;
     }
-
 }

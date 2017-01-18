@@ -10,6 +10,10 @@ namespace Dot\Helpers\Route;
 
 use Psr\Http\Message\UriInterface;
 
+/**
+ * Class UriHelperTrait
+ * @package Dot\Helpers\Route
+ */
 trait UriHelperTrait
 {
     /**
