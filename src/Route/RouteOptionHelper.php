@@ -60,8 +60,8 @@ class RouteOptionHelper
                 ? $routeOption['fragment_identifier']
                 : null;
 
-            $options = isset($routeOption['options']) && is_array($routeOption['options'])
-                ? $routeOption['options']
+            $options = isset($routeOption['route_options']) && is_array($routeOption['route_options'])
+                ? $routeOption['route_options']
                 : [];
         }
 
