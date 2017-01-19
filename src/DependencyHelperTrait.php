@@ -20,11 +20,11 @@ trait DependencyHelperTrait
     public function getDependencyObject(ContainerInterface $container, $name)
     {
         $dependency = $name;
-        if($container->has($dependency)) {
+        if ($container->has($dependency)) {
             $dependency = $container->get($dependency);
         }
 
-        if(is_string($dependency) && class_exists($dependency)) {
+        if (is_string($dependency) && class_exists($dependency)) {
             $dependency = new $dependency;
         }
 

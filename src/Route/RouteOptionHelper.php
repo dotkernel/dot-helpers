@@ -9,7 +9,6 @@
 
 namespace Dot\Helpers\Route;
 
-
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Uri;
 use Zend\Expressive\Helper\ServerUrlHelper;
@@ -53,19 +52,15 @@ class RouteOptionHelper
             $params = isset($route['params']) ? $route['params'] : [];
             $queryParams = isset($route['query_params']) ? $route['query_params'] : [];
         }
-
         if (empty($routeName) || !is_string($routeName)) {
             throw new \RuntimeException('Invalid route option');
         }
-
         $uri = new Uri($this->serverUrlHelper->generate($this->urlHelper->generate($routeName, $params)));
         if (!empty($queryParams)) {
             $query = http_build_query($queryParams);
             $uri = $uri->withQuery($query);
         }
-
         return $uri;
-
     }
 
     /**
@@ -79,7 +74,6 @@ class RouteOptionHelper
         } elseif (is_array($route)) {
             return isset($route['name']) ? $route['name'] : null;
         }
-
         return null;
     }
 
@@ -118,5 +112,4 @@ class RouteOptionHelper
         $this->serverUrlHelper = $serverUrlHelper;
         return $this;
     }
-
 }

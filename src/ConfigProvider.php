@@ -9,7 +9,6 @@
 
 namespace Dot\Helpers;
 
-
 use Dot\Helpers\Factory\RouteOptionHelperFactory;
 use Dot\Helpers\Route\RouteOptionHelper;
 
