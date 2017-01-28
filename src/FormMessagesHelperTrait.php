@@ -7,6 +7,8 @@
  * Time: 11:12 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers;
 
 /**
@@ -21,7 +23,7 @@ trait FormMessagesHelperTrait
      * @param array $formMessages
      * @return array
      */
-    protected function getFormMessages(array $formMessages)
+    protected function getFormMessages(array $formMessages) : array
     {
         $messages = [];
         foreach ($formMessages as $message) {
@@ -47,7 +49,7 @@ trait FormMessagesHelperTrait
      * @param array $formMessages
      * @return array
      */
-    protected function getFormErrors(array $formMessages)
+    protected function getFormErrors(array $formMessages) : array
     {
         $errors = [];
         foreach ($formMessages as $key => $message) {

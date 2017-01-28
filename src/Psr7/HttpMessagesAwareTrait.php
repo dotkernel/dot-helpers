@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers\Psr7;
 
 use Psr\Http\Message\ResponseInterface;
@@ -27,14 +29,14 @@ trait HttpMessagesAwareTrait
     /**
      * @return ServerRequestInterface
      */
-    public function getServerRequest()
+    public function getServerRequest() : ServerRequestInterface
     {
         return $this->request;
     }
 
     /**
      * @param ServerRequestInterface $request
-     * @return HttpMessagesAwareTrait
+     * @return $this
      */
     public function setServerRequest(ServerRequestInterface $request)
     {
@@ -45,14 +47,14 @@ trait HttpMessagesAwareTrait
     /**
      * @return ResponseInterface
      */
-    public function getResponse()
+    public function getResponse() : ResponseInterface
     {
         return $this->response;
     }
 
     /**
      * @param ResponseInterface $response
-     * @return HttpMessagesAwareTrait
+     * @return $this
      */
     public function setResponse(ResponseInterface $response)
     {

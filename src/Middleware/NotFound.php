@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
@@ -25,10 +27,13 @@ class NotFound
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @param callable|null $next
-     * @return mixed
+     * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
-    {
+    public function __invoke(
+        ServerRequestInterface $request,
+        ResponseInterface $response,
+        callable $next = null
+    ) : ResponseInterface {
         return $next($request, $response->withStatus(404), 'Page not found');
     }
 }

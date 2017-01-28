@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers\Psr7;
 
 use Psr\Http\Message\ResponseInterface;
@@ -20,23 +22,23 @@ interface HttpMessagesAwareInterface
 {
     /**
      * @param ServerRequestInterface $request
-     * @return $this
+     * @return mixed
      */
     public function setServerRequest(ServerRequestInterface $request);
 
     /**
      * @return ServerRequestInterface
      */
-    public function getServerRequest();
+    public function getServerRequest() : ServerRequestInterface;
 
     /**
      * @param ResponseInterface $response
-     * @return $this
+     * @return mixed
      */
     public function setResponse(ResponseInterface $response);
 
     /**
      * @return ResponseInterface
      */
-    public function getResponse();
+    public function getResponse() : ResponseInterface;
 }

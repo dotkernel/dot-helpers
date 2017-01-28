@@ -6,6 +6,8 @@
  * Time: 9:00 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers\Route;
 
 use Psr\Http\Message\UriInterface;
@@ -22,7 +24,7 @@ trait UriHelperTrait
      * @param string $paramName
      * @return UriInterface
      */
-    public function appendQueryParam(UriInterface $toUri, $param, $paramName)
+    public function appendQueryParam(UriInterface $toUri, $param, $paramName) : UriInterface
     {
         $query = $toUri->getQuery();
         $arr = [];

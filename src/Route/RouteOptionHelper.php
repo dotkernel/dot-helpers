@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers\Route;
 
 use Psr\Http\Message\UriInterface;
@@ -38,20 +40,15 @@ class RouteOptionHelper
     }
 
     /**
-     * @param $route
+     * @param array $routeOptions
      * @return UriInterface
      */
-    public function getUri($route)
+    public function getUri(array $routeOptions) : UriInterface
     {
-        $params = [];
-        $queryParams = [];
-        if (is_string($route)) {
-            $routeName = $route;
-        } elseif (is_array($route)) {
-            $routeName = isset($route['name']) ? $route['name'] : null;
-            $params = isset($route['params']) ? $route['params'] : [];
-            $queryParams = isset($route['query_params']) ? $route['query_params'] : [];
-        }
+        $routeName = isset($routeOptions['route_name']) ? $routeOptions['route_name'] : null;
+        $params = isset($routeOptions['route_params']) ? $routeOptions['route_params'] : [];
+        $queryParams = isset($routeOptions['query_params']) ? $routeOptions['query_params'] : [];
+
         if (empty($routeName) || !is_string($routeName)) {
             throw new \RuntimeException('Invalid route option');
         }
@@ -64,52 +61,46 @@ class RouteOptionHelper
     }
 
     /**
-     * @param $route
-     * @return mixed|null
+     * @param array $routeOptions
+     * @return string
      */
-    public function getRouteName($route)
+    public function getRouteName(array $routeOptions) : string
     {
-        if (is_string($route)) {
-            return $route;
-        } elseif (is_array($route)) {
-            return isset($route['name']) ? $route['name'] : null;
-        }
-        return null;
+        return isset($routeOptions['route_name']) && is_string($routeOptions['route_name'])
+            ? $routeOptions['route_name'] : '';
     }
 
     /**
      * @return UrlHelper
      */
-    public function getUrlHelper()
+    public function getUrlHelper() : UrlHelper
     {
         return $this->urlHelper;
     }
 
     /**
      * @param UrlHelper $urlHelper
-     * @return RouteOptionHelper
+     * @return mixed
      */
-    public function setUrlHelper($urlHelper)
+    public function setUrlHelper(UrlHelper $urlHelper)
     {
         $this->urlHelper = $urlHelper;
-        return $this;
     }
 
     /**
      * @return ServerUrlHelper
      */
-    public function getServerUrlHelper()
+    public function getServerUrlHelper() : ServerUrlHelper
     {
         return $this->serverUrlHelper;
     }
 
     /**
      * @param ServerUrlHelper $serverUrlHelper
-     * @return RouteOptionHelper
+     * @return mixed
      */
-    public function setServerUrlHelper($serverUrlHelper)
+    public function setServerUrlHelper(ServerUrlHelper $serverUrlHelper)
     {
         $this->serverUrlHelper = $serverUrlHelper;
-        return $this;
     }
 }

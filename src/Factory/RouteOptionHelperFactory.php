@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types=1);
+
 namespace Dot\Helpers\Factory;
 
 use Dot\Helpers\Route\RouteOptionHelper;
@@ -24,7 +26,7 @@ class RouteOptionHelperFactory
      * @param ContainerInterface $container
      * @return RouteOptionHelper
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container) : RouteOptionHelper
     {
         $urlHelper = $container->get(UrlHelper::class);
         $serverUrlHelper = $container->get(ServerUrlHelper::class);
