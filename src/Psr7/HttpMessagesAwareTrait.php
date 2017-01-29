@@ -7,7 +7,7 @@
  * Time: 7:49 PM
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Dot\Helpers\Psr7;
 
@@ -29,7 +29,7 @@ trait HttpMessagesAwareTrait
     /**
      * @return ServerRequestInterface
      */
-    public function getServerRequest() : ServerRequestInterface
+    public function getServerRequest(): ServerRequestInterface
     {
         return $this->request;
     }
@@ -45,7 +45,7 @@ trait HttpMessagesAwareTrait
     /**
      * @return ResponseInterface
      */
-    public function getResponse() : ResponseInterface
+    public function getResponse(): ResponseInterface
     {
         return $this->response;
     }

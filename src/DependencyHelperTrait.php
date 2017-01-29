@@ -7,7 +7,7 @@
  * Time: 7:39 PM
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Dot\Helpers;
 

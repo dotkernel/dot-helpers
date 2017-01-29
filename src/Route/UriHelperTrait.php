@@ -7,7 +7,7 @@
  * Time: 9:00 PM
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Dot\Helpers\Route;
 
@@ -25,11 +25,11 @@ trait UriHelperTrait
      * @param string $value
      * @return UriInterface
      */
-    public function appendQueryParam(UriInterface $toUri, string $name, string $value) : UriInterface
+    public function appendQueryParam(UriInterface $toUri, string $name, string $value): UriInterface
     {
         $query = $toUri->getQuery();
         $arr = [];
-        if (! empty($query)) {
+        if (!empty($query)) {
             parse_str($query, $arr);
         }
 

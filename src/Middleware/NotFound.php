@@ -7,7 +7,7 @@
  * Time: 7:49 PM
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Dot\Helpers\Middleware;
 
@@ -33,7 +33,7 @@ class NotFound
         ServerRequestInterface $request,
         ResponseInterface $response,
         callable $next = null
-    ) : ResponseInterface {
+    ): ResponseInterface {
         return $next($request, $response->withStatus(404), 'Page not found');
     }
 }

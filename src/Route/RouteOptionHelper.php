@@ -7,7 +7,7 @@
  * Time: 7:49 PM
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Dot\Helpers\Route;
 
@@ -43,7 +43,7 @@ class RouteOptionHelper
      * @param array $routeOptions
      * @return UriInterface
      */
-    public function getUri(array $routeOptions) : UriInterface
+    public function getUri(array $routeOptions): UriInterface
     {
         $routeName = $routeOptions['route_name'] ?? '';
         $routeParams = $routeOptions['route_params'] ?? [];
@@ -64,7 +64,7 @@ class RouteOptionHelper
      * @param array $routeOptions
      * @return string
      */
-    public function getRouteName(array $routeOptions) : string
+    public function getRouteName(array $routeOptions): string
     {
         return isset($routeOptions['route_name']) && is_string($routeOptions['route_name'])
             ? $routeOptions['route_name'] : '';
@@ -73,7 +73,7 @@ class RouteOptionHelper
     /**
      * @return UrlHelper
      */
-    public function getUrlHelper() : UrlHelper
+    public function getUrlHelper(): UrlHelper
     {
         return $this->urlHelper;
     }
@@ -89,7 +89,7 @@ class RouteOptionHelper
     /**
      * @return ServerUrlHelper
      */
-    public function getServerUrlHelper() : ServerUrlHelper
+    public function getServerUrlHelper(): ServerUrlHelper
     {
         return $this->serverUrlHelper;
     }

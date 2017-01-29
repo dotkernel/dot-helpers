@@ -7,7 +7,7 @@
  * Time: 7:49 PM
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Dot\Helpers\Psr7;
 
@@ -28,7 +28,7 @@ interface HttpMessagesAwareInterface
     /**
      * @return ServerRequestInterface
      */
-    public function getServerRequest() : ServerRequestInterface;
+    public function getServerRequest(): ServerRequestInterface;
 
     /**
      * @param ResponseInterface $response
@@ -38,5 +38,5 @@ interface HttpMessagesAwareInterface
     /**
      * @return ResponseInterface
      */
-    public function getResponse() : ResponseInterface;
+    public function getResponse(): ResponseInterface;
 }
