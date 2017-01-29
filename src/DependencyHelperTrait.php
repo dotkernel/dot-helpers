@@ -19,7 +19,7 @@ use Interop\Container\ContainerInterface;
  */
 trait DependencyHelperTrait
 {
-    public function getDependencyObject(ContainerInterface $container, $name)
+    public function getDependencyObject(ContainerInterface $container, string $name)
     {
         $dependency = $name;
         if ($container->has($dependency)) {

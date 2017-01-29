@@ -22,7 +22,6 @@ interface HttpMessagesAwareInterface
 {
     /**
      * @param ServerRequestInterface $request
-     * @return mixed
      */
     public function setServerRequest(ServerRequestInterface $request);
 
@@ -33,7 +32,6 @@ interface HttpMessagesAwareInterface
 
     /**
      * @param ResponseInterface $response
-     * @return mixed
      */
     public function setResponse(ResponseInterface $response);
 

@@ -26,10 +26,11 @@ class RouteOptionHelperFactory
      * @param ContainerInterface $container
      * @return RouteOptionHelper
      */
-    public function __invoke(ContainerInterface $container) : RouteOptionHelper
+    public function __invoke(ContainerInterface $container)
     {
         $urlHelper = $container->get(UrlHelper::class);
         $serverUrlHelper = $container->get(ServerUrlHelper::class);
+
         return new RouteOptionHelper($urlHelper, $serverUrlHelper);
     }
 }

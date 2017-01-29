@@ -45,14 +45,14 @@ class RouteOptionHelper
      */
     public function getUri(array $routeOptions) : UriInterface
     {
-        $routeName = isset($routeOptions['route_name']) ? $routeOptions['route_name'] : null;
-        $params = isset($routeOptions['route_params']) ? $routeOptions['route_params'] : [];
-        $queryParams = isset($routeOptions['query_params']) ? $routeOptions['query_params'] : [];
+        $routeName = $routeOptions['route_name'] ?? '';
+        $routeParams = $routeOptions['route_params'] ?? [];
+        $queryParams = $routeOptions['query_params'] ?? [];
 
         if (empty($routeName) || !is_string($routeName)) {
-            throw new \RuntimeException('Invalid route option');
+            throw new \RuntimeException('Invalid route name option');
         }
-        $uri = new Uri($this->serverUrlHelper->generate($this->urlHelper->generate($routeName, $params)));
+        $uri = new Uri($this->serverUrlHelper->generate($this->urlHelper->generate($routeName, $routeParams)));
         if (!empty($queryParams)) {
             $query = http_build_query($queryParams);
             $uri = $uri->withQuery($query);
@@ -80,7 +80,6 @@ class RouteOptionHelper
 
     /**
      * @param UrlHelper $urlHelper
-     * @return mixed
      */
     public function setUrlHelper(UrlHelper $urlHelper)
     {
@@ -97,7 +96,6 @@ class RouteOptionHelper
 
     /**
      * @param ServerUrlHelper $serverUrlHelper
-     * @return mixed
      */
     public function setServerUrlHelper(ServerUrlHelper $serverUrlHelper)
     {

@@ -17,12 +17,22 @@
 
 
             {% if page.getOption('type') and page.getOption('type') == 'separator' %}
+
                 <li role="separator" class="divider"></li>
+
             {% elseif page.getOption('type') and page.getOption('type') == 'text' %}
+
                 <li><p class="navbar-text">{{ page.getOption('label') }}</p></li>
+
             {% else %}
+
                 <li class="{{ liClass }}">
-                    <a href="{{ navigation.getHref(page) }}" {% autoescape false %}{{ navigationPageAttributes(page) ~ extraAttributes }}{% endautoescape %} >
+
+                    <a href="{{ navigation.getHref(page) }}"
+                            {% autoescape false %}
+                                {{ navigationPageAttributes(page) ~ extraAttributes }}
+                            {% endautoescape %} >
+
                         {% if page.getOption('icon') %}
 
                             <i class="{{ page.getOption('icon') }}"></i>&nbsp;

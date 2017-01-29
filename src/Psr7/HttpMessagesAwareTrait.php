@@ -36,12 +36,10 @@ trait HttpMessagesAwareTrait
 
     /**
      * @param ServerRequestInterface $request
-     * @return $this
      */
     public function setServerRequest(ServerRequestInterface $request)
     {
         $this->request = $request;
-        return $this;
     }
 
     /**
@@ -54,12 +52,10 @@ trait HttpMessagesAwareTrait
 
     /**
      * @param ResponseInterface $response
-     * @return $this
      */
     public function setResponse(ResponseInterface $response)
     {
         $this->response = $response;
-        return $this;
     }
 
 
