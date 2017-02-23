@@ -27,13 +27,6 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencyConfig(),
-
-            'templates' => [
-                'paths' => [
-                    'dot-partial' => [__DIR__ . '/../templates/dot-partial'],
-                    'dot-form' => [__DIR__ . '/../templates/dot-form'],
-                ]
-            ]
         ];
     }
 
