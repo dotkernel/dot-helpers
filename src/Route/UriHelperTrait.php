@@ -1,10 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: n3vrax
+ * @copyright: DotKernel
+ * @library: dotkernel/dot-helpers
+ * @author: n3vrax
  * Date: 10/3/2016
  * Time: 9:00 PM
  */
+
+declare(strict_types = 1);
 
 namespace Dot\Helpers\Route;
 
@@ -18,11 +21,11 @@ trait UriHelperTrait
 {
     /**
      * @param UriInterface $toUri
-     * @param mixed $param
-     * @param string $paramName
+     * @param string $name
+     * @param string $value
      * @return UriInterface
      */
-    public function appendQueryParam(UriInterface $toUri, $param, $paramName)
+    public function appendQueryParam(UriInterface $toUri, string $name, string $value): UriInterface
     {
         $query = $toUri->getQuery();
         $arr = [];
@@ -31,7 +34,7 @@ trait UriHelperTrait
         }
 
         $query = http_build_query(
-            array_merge($arr, [$paramName => urlencode($param)])
+            array_merge($arr, [$name => urlencode($value)])
         );
 
         $uri = $toUri->withQuery($query);

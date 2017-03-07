@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types = 1);
+
 namespace Dot\Helpers;
 
 use Dot\Helpers\Factory\RouteOptionHelperFactory;
@@ -21,24 +23,17 @@ class ConfigProvider
     /**
      * @return array
      */
-    public function __invoke()
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencyConfig(),
-
-            'templates' => [
-                'paths' => [
-                    'dot-partial' => [__DIR__ . '/../templates/dot-partial'],
-                    'dot-form' => [__DIR__ . '/../templates/dot-form'],
-                ]
-            ]
         ];
     }
 
     /**
      * @return array
      */
-    public function getDependencyConfig()
+    public function getDependencyConfig(): array
     {
         return [
             'factories' => [

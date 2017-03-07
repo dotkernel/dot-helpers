@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types = 1);
+
 namespace Dot\Helpers\Factory;
 
 use Dot\Helpers\Route\RouteOptionHelper;
@@ -28,6 +30,7 @@ class RouteOptionHelperFactory
     {
         $urlHelper = $container->get(UrlHelper::class);
         $serverUrlHelper = $container->get(ServerUrlHelper::class);
+
         return new RouteOptionHelper($urlHelper, $serverUrlHelper);
     }
 }
