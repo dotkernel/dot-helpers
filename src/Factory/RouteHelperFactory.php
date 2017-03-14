@@ -9,8 +9,8 @@ declare(strict_types = 1);
 
 namespace Dot\Helpers\Factory;
 
-use Dot\Helpers\Route\RouteOptionHelper;
-use Interop\Container\ContainerInterface;
+use Dot\Helpers\Route\RouteHelper;
+use Psr\Container\ContainerInterface;
 use Zend\Expressive\Helper\ServerUrlHelper;
 use Zend\Expressive\Helper\UrlHelper;
 
@@ -18,17 +18,17 @@ use Zend\Expressive\Helper\UrlHelper;
  * Class RouteOptionHelperFactory
  * @package Dot\Helpers\Factory
  */
-class RouteOptionHelperFactory
+class RouteHelperFactory
 {
     /**
      * @param ContainerInterface $container
-     * @return RouteOptionHelper
+     * @return RouteHelper
      */
     public function __invoke(ContainerInterface $container)
     {
         $urlHelper = $container->get(UrlHelper::class);
         $serverUrlHelper = $container->get(ServerUrlHelper::class);
 
-        return new RouteOptionHelper($urlHelper, $serverUrlHelper);
+        return new RouteHelper($urlHelper, $serverUrlHelper);
     }
 }

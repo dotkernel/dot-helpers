@@ -18,7 +18,7 @@ use Zend\Expressive\Helper\UrlHelper;
  * Class RouteOptionHelper
  * @package Dot\Helpers\Route
  */
-class RouteOptionHelper
+class RouteHelper
 {
     /** @var  UrlHelper */
     protected $urlHelper;
@@ -38,34 +38,59 @@ class RouteOptionHelper
     }
 
     /**
-     * @param array $routeOptions
+     * @param array $specs
+     * @param bool $absolute
      * @return UriInterface
      */
-    public function getUri(array $routeOptions): UriInterface
+    public function generateUri(array $specs, bool $absolute = false): UriInterface
     {
-        $routeName = $routeOptions['route_name'] ?? '';
-        $routeParams = $routeOptions['route_params'] ?? [];
-        $queryParams = $routeOptions['query_params'] ?? [];
+        $routeName = $specs['route_name'] ?? null;
+        $routeParams = $specs['route_params'] ?? [];
+        $queryParams = $specs['query_params'] ?? [];
+        $fragmentIdentifier = $specs['fragment_id'] ?? null;
+        $routeOptions = $specs['options'] ?? [];
 
-        if (empty($routeName) || !is_string($routeName)) {
-            throw new \RuntimeException('Invalid route name option');
+        $uri = $this->urlHelper->generate($routeName, $routeParams, $queryParams, $fragmentIdentifier, $routeOptions);
+        if ($absolute) {
+            return new Uri($this->serverUrlHelper->generate($uri));
         }
-        $uri = new Uri($this->serverUrlHelper->generate($this->urlHelper->generate($routeName, $routeParams)));
-        if (!empty($queryParams)) {
-            $query = http_build_query($queryParams);
-            $uri = $uri->withQuery($query);
-        }
-        return $uri;
+
+        return new Uri($uri);
     }
 
     /**
-     * @param array $routeOptions
-     * @return string
+     * @param UriInterface $uri1
+     * @param UriInterface $uri2
+     * @return bool
      */
-    public function getRouteName(array $routeOptions): string
+    public function uriEquals(UriInterface $uri1, UriInterface $uri2): bool
     {
-        return isset($routeOptions['route_name']) && is_string($routeOptions['route_name'])
-            ? $routeOptions['route_name'] : '';
+        return $uri1->getScheme() === $uri2->getScheme()
+            && $uri1->getHost() === $uri2->getHost()
+            && $uri1->getPath() === $uri2->getPath()
+            && $uri1->getPort() === $uri2->getPort();
+    }
+
+    /**
+     * @param UriInterface $uri
+     * @param string $name
+     * @param $value
+     * @return UriInterface
+     */
+    public function appendQueryParam(UriInterface $uri, string $name, $value): UriInterface
+    {
+        $query = $uri->getQuery();
+        $arr = [];
+        if (!empty($query)) {
+            parse_str($query, $arr);
+        }
+
+        $query = http_build_query(
+            array_merge($arr, [$name => urlencode($value)])
+        );
+
+        $uri = $uri->withQuery($query);
+        return $uri;
     }
 
     /**
