@@ -9,8 +9,8 @@ declare(strict_types = 1);
 
 namespace Dot\Helpers;
 
-use Dot\Helpers\Factory\RouteOptionHelperFactory;
-use Dot\Helpers\Route\RouteOptionHelper;
+use Dot\Helpers\Factory\RouteHelperFactory;
+use Dot\Helpers\Route\RouteHelper;
 
 /**
  * Class ConfigProvider
@@ -35,7 +35,7 @@ class ConfigProvider
     {
         return [
             'factories' => [
-                RouteOptionHelper::class => RouteOptionHelperFactory::class,
+                RouteHelper::class => RouteHelperFactory::class,
             ],
         ];
     }
