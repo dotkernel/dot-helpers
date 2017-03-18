@@ -1,3 +1,21 @@
+## 0.2.1 - 2017-03-18
+
+### Changed
+* updated to dependency expressive helpers > 4.0
+
+### Added
+* Nothing
+
+### Deprecated
+* Nothing
+
+### Removed
+* Nothing
+
+### Fixed
+* Nothing
+
+
 ## 0.2.0 - 2017-03-15
 
 ### Changed
