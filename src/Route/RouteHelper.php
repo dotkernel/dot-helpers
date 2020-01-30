@@ -10,9 +10,9 @@ declare(strict_types = 1);
 namespace Dot\Helpers\Route;
 
 use Psr\Http\Message\UriInterface;
-use Zend\Diactoros\Uri;
-use Zend\Expressive\Helper\ServerUrlHelper;
-use Zend\Expressive\Helper\UrlHelper;
+use Laminas\Diactoros\Uri;
+use Mezzio\Helper\ServerUrlHelper;
+use Mezzio\Helper\UrlHelper;
 
 /**
  * Class RouteOptionHelper

@@ -11,8 +11,8 @@ namespace Dot\Helpers\Factory;
 
 use Dot\Helpers\Route\RouteHelper;
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Helper\ServerUrlHelper;
-use Zend\Expressive\Helper\UrlHelper;
+use Mezzio\Helper\ServerUrlHelper;
+use Mezzio\Helper\UrlHelper;
 
 /**
  * Class RouteOptionHelperFactory
