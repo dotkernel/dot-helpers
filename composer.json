@@ -1,8 +1,13 @@
 {
     "name": "dotkernel/dot-helpers",
     "type": "library",
-    "description": "Various helper structures and classes",
+    "description": "DotKernel helper component providing various helper structures and classes",
     "license": "MIT",
+    "keywords": [
+        "helper",
+        "mezzio",
+        "laminas"
+    ],
     "authors": [
         {
             "name": "DotKernel Team",
@@ -12,14 +17,14 @@
     "require": {
         "php": "^7.4",
         "psr/http-message": "^1.0",
-        "laminas/laminas-servicemanager": "^3.3.0",
-        "mezzio/mezzio-helpers": "^5.0",
+        "laminas/laminas-servicemanager": "^3.4",
+        "mezzio/mezzio-helpers": "^5.3",
         "laminas/laminas-dependency-plugin": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8",
-        "squizlabs/php_codesniffer": "^2.3",
-        "laminas/laminas-diactoros": "^1.3"
+        "phpunit/phpunit": "^9.1",
+        "squizlabs/php_codesniffer": "^3.5",
+        "laminas/laminas-diactoros": "^2.2"
     },
     "autoload": {
         "psr-4": {
