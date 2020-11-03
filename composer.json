@@ -3,6 +3,7 @@
     "type": "library",
     "description": "DotKernel helper component providing various helper structures and classes",
     "license": "MIT",
+    "homepage": "https://github.com/dotkernel/dot-helpers",
     "keywords": [
         "helper",
         "mezzio",
@@ -19,7 +20,7 @@
         "psr/http-message": "^1.0",
         "laminas/laminas-servicemanager": "^3.4",
         "mezzio/mezzio-helpers": "^5.3",
-        "laminas/laminas-dependency-plugin": "^1.0"
+        "laminas/laminas-dependency-plugin": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.1",
@@ -34,12 +35,6 @@
     "autoload-dev": {
         "psr-4": {
             "DotTest\\Helpers\\": "test/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "3.0-dev",
-            "dev-develop": "3.0-dev"
         }
     }
 }
