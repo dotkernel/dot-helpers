@@ -1,23 +1,19 @@
 <?php
-/**
- * @see https://github.com/dotkernel/dot-helpers/ for the canonical source repository
- * @copyright Copyright (c) 2017 Apidemia (https://www.apidemia.com)
- * @license https://github.com/dotkernel/dot-helpers/blob/master/LICENSE.md MIT License
- */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Dot\Helpers\Route;
 
-use Psr\Http\Message\UriInterface;
 use Laminas\Diactoros\Uri;
 use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Helper\UrlHelper;
+use Psr\Http\Message\UriInterface;
 
-/**
- * Class RouteOptionHelper
- * @package Dot\Helpers\Route
- */
+use function array_merge;
+use function http_build_query;
+use function parse_str;
+use function urlencode;
+
 class RouteHelper
 {
     /** @var  UrlHelper */
@@ -26,29 +22,19 @@ class RouteHelper
     /** @var  ServerUrlHelper */
     protected $serverUrlHelper;
 
-    /**
-     * RouteOptionHelper constructor.
-     * @param UrlHelper $urlHelper
-     * @param ServerUrlHelper $serverUrlHelper
-     */
     public function __construct(UrlHelper $urlHelper, ServerUrlHelper $serverUrlHelper)
     {
-        $this->urlHelper = $urlHelper;
+        $this->urlHelper       = $urlHelper;
         $this->serverUrlHelper = $serverUrlHelper;
     }
 
-    /**
-     * @param array $specs
-     * @param bool $absolute
-     * @return UriInterface
-     */
     public function generateUri(array $specs, bool $absolute = false): UriInterface
     {
-        $routeName = $specs['route_name'] ?? null;
-        $routeParams = $specs['route_params'] ?? [];
-        $queryParams = $specs['query_params'] ?? [];
+        $routeName          = $specs['route_name'] ?? null;
+        $routeParams        = $specs['route_params'] ?? [];
+        $queryParams        = $specs['query_params'] ?? [];
         $fragmentIdentifier = $specs['fragment_id'] ?? null;
-        $routeOptions = $specs['options'] ?? [];
+        $routeOptions       = $specs['options'] ?? [];
 
         $uri = $this->urlHelper->generate($routeName, $routeParams, $queryParams, $fragmentIdentifier, $routeOptions);
         if ($absolute) {
@@ -58,11 +44,6 @@ class RouteHelper
         return new Uri($uri);
     }
 
-    /**
-     * @param UriInterface $uri1
-     * @param UriInterface $uri2
-     * @return bool
-     */
     public function uriEquals(UriInterface $uri1, UriInterface $uri2): bool
     {
         return $uri1->getScheme() === $uri2->getScheme()
@@ -71,17 +52,12 @@ class RouteHelper
             && $uri1->getPort() === $uri2->getPort();
     }
 
-    /**
-     * @param UriInterface $uri
-     * @param string $name
-     * @param $value
-     * @return UriInterface
-     */
-    public function appendQueryParam(UriInterface $uri, string $name, $value): UriInterface
+    public function appendQueryParam(UriInterface $uri, string $name, string $value): UriInterface
     {
         $query = $uri->getQuery();
-        $arr = [];
-        if (!empty($query)) {
+        $arr   = [];
+
+        if (! empty($query)) {
             parse_str($query, $arr);
         }
 
@@ -90,35 +66,30 @@ class RouteHelper
         );
 
         $uri = $uri->withQuery($query);
+
         return $uri;
     }
 
-    /**
-     * @return UrlHelper
-     */
     public function getUrlHelper(): UrlHelper
     {
         return $this->urlHelper;
     }
 
     /**
-     * @param UrlHelper $urlHelper
+     * @return void
      */
     public function setUrlHelper(UrlHelper $urlHelper)
     {
         $this->urlHelper = $urlHelper;
     }
 
-    /**
-     * @return ServerUrlHelper
-     */
     public function getServerUrlHelper(): ServerUrlHelper
     {
         return $this->serverUrlHelper;
     }
 
     /**
-     * @param ServerUrlHelper $serverUrlHelper
+     * @return void
      */
     public function setServerUrlHelper(ServerUrlHelper $serverUrlHelper)
     {
