@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotTest\Helpers;
+namespace DotTest\Helpers\Factory;
 
 use Dot\Helpers\Factory\RouteHelperFactory;
 use Dot\Helpers\Route\RouteHelper;
@@ -11,7 +11,9 @@ use Mezzio\Helper\UrlHelper;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use TypeError;
 
 class RouteHelperFactoryTest extends TestCase
@@ -23,10 +25,13 @@ class RouteHelperFactoryTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->routeHelperFactory = new RouteHelperFactory();
         $this->containerInterface = $this->createMock(ContainerInterface::class);
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function testWillNotCreateWithoutParams(): void
     {
         $this->containerInterface->method('get')->willReturnMap([
@@ -39,9 +44,10 @@ class RouteHelperFactoryTest extends TestCase
         (new RouteHelperFactory())($this->containerInterface);
     }
 
-
     /**
+     * @throws ContainerExceptionInterface
      * @throws Exception
+     * @throws NotFoundExceptionInterface
      */
     public function testWillCreateWithParams(): void
     {

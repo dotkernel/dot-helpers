@@ -16,11 +16,9 @@ use function urlencode;
 
 class RouteHelper
 {
-    /** @var  UrlHelper */
-    protected $urlHelper;
+    protected UrlHelper $urlHelper;
 
-    /** @var  ServerUrlHelper */
-    protected $serverUrlHelper;
+    protected ServerUrlHelper $serverUrlHelper;
 
     public function __construct(UrlHelper $urlHelper, ServerUrlHelper $serverUrlHelper)
     {
@@ -75,10 +73,7 @@ class RouteHelper
         return $this->urlHelper;
     }
 
-    /**
-     * @return void
-     */
-    public function setUrlHelper(UrlHelper $urlHelper)
+    public function setUrlHelper(UrlHelper $urlHelper): void
     {
         $this->urlHelper = $urlHelper;
     }
@@ -88,10 +83,7 @@ class RouteHelper
         return $this->serverUrlHelper;
     }
 
-    /**
-     * @return void
-     */
-    public function setServerUrlHelper(ServerUrlHelper $serverUrlHelper)
+    public function setServerUrlHelper(ServerUrlHelper $serverUrlHelper): void
     {
         $this->serverUrlHelper = $serverUrlHelper;
     }

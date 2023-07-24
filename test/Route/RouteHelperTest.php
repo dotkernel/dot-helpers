@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotTest\Helpers;
+namespace DotTest\Helpers\Route;
 
 use Dot\Helpers\Route\RouteHelper;
 use Laminas\Diactoros\Uri;
@@ -44,7 +44,7 @@ class RouteHelperTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testUriEquals()
+    public function testUriEquals(): void
     {
         $uri1 = $this->createMock(UriInterface::class);
         $uri2 = $this->createMock(UriInterface::class);
@@ -65,7 +65,7 @@ class RouteHelperTest extends TestCase
         $this->assertTrue($generateUri);
     }
 
-    public function testAppendQueryParam()
+    public function testAppendQueryParam(): void
     {
         $uri    = new Uri();
         $newUri = $this->routeHelper->appendQueryParam($uri, 'test', 'testing');

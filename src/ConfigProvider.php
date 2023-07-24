@@ -9,9 +9,6 @@ use Dot\Helpers\Route\RouteHelper;
 
 class ConfigProvider
 {
-    /**
-     * @return array
-     */
     public function __invoke(): array
     {
         return [
@@ -19,9 +16,6 @@ class ConfigProvider
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getDependencyConfig(): array
     {
         return [
