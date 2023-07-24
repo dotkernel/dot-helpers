@@ -63,9 +63,7 @@ class RouteHelper
             array_merge($arr, [$name => urlencode($value)])
         );
 
-        $uri = $uri->withQuery($query);
-
-        return $uri;
+        return $uri->withQuery($query);
     }
 
     public function getUrlHelper(): UrlHelper
