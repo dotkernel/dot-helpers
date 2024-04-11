@@ -1,0 +1,18 @@
+docs_dir: docs/book
+site_dir: docs/html
+extra:
+  project: Packages
+  current_version: v3
+  versions:
+    - v3
+nav:
+  - Home: index.md
+  - v3:
+      - Overview: v3/configuration.md
+      - Configuration: v3/installation.md
+      - Installation: v3/overview.md
+site_name: dot-helpers
+site_description: "DotKernel's component used to handle urls"
+repo_url: "https://github.com/dotkernel/dot-helpers"
+plugins:
+  - search

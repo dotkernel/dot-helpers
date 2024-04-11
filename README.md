@@ -14,3 +14,17 @@
 [![SymfonyInsight](https://insight.symfony.com/projects/e79c1b2a-c61f-4ce6-9b6f-9c6528e049c6/big.svg)](https://insight.symfony.com/projects/e79c1b2a-c61f-4ce6-9b6f-9c6528e049c6)
 
 DotKernel helper component based on [mezzio/mezzio-helpers](https://packagist.org/packages/mezzio/mezzio-helpers) providing various helper structures and classes.
+
+## Requirements
+
+- PHP >= 8.1
+
+## Install
+
+Install dot-helpers in your application by running the following command:
+
+    composer require dotkernel/dot-helpers
+
+Next, register the package's `ConfigProvider` to your application config.
+
+Note : Make sure to register the package under the `// DK packages` section.
