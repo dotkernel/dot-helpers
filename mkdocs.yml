@@ -8,9 +8,9 @@ extra:
 nav:
   - Home: index.md
   - v3:
-      - Configuration: v3/configuration.md
-      - Installation: v3/installation.md
       - Overview: v3/overview.md
+      - Installation: v3/installation.md
+      - Configuration: v3/configuration.md
 site_name: dot-helpers
 site_description: "DotKernel's component used to handle urls"
 repo_url: "https://github.com/dotkernel/dot-helpers"
