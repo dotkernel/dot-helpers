@@ -1,5 +1,11 @@
 # dot-helpers
 
+> dot-helpers is a wrapper on top of [mezzio/mezzio-helpers](https://packagist.org/packages/mezzio/mezzio-helpers)
+>
+> ![OSS Lifecycle](https://img.shields.io/osslifecycle/mezzio/mezzio-helpers)
+
+## dot-helpers badges
+
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-helpers)
 ![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-helpers/3.4.3)
 
@@ -12,8 +18,6 @@
 [![codecov](https://codecov.io/gh/dotkernel/dot-helpers/graph/badge.svg?token=LIN5FVL5QP)](https://codecov.io/gh/dotkernel/dot-helpers)
 
 [![SymfonyInsight](https://insight.symfony.com/projects/e79c1b2a-c61f-4ce6-9b6f-9c6528e049c6/big.svg)](https://insight.symfony.com/projects/e79c1b2a-c61f-4ce6-9b6f-9c6528e049c6)
-
-DotKernel helper component based on [mezzio/mezzio-helpers](https://packagist.org/packages/mezzio/mezzio-helpers) providing various helper structures and classes.
 
 ## Requirements
 

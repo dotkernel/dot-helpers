@@ -1,3 +1,5 @@
 # Overview
 
-`dot-helpers` is DonKernel's component based on [mezzio/mezzio-helpers](https://packagist.org/packages/mezzio/mezzio-helpers) providing various helper structures and classes which can be used to handle urls.
+> dot-helpers is a wrapper on top of [mezzio/mezzio-helpers](https://packagist.org/packages/mezzio/mezzio-helpers)
+>
+> ![OSS Lifecycle](https://img.shields.io/osslifecycle/mezzio/mezzio-helpers)
