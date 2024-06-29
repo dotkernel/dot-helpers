@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.dotkernel.org/dot-helpers/</loc>
-         <lastmod>2024-05-03</lastmod>
+         <lastmod>2024-06-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/dot-helpers/v3/configuration/</loc>
-         <lastmod>2024-05-03</lastmod>
+         <lastmod>2024-06-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/dot-helpers/v3/installation/</loc>
-         <lastmod>2024-05-03</lastmod>
+         <lastmod>2024-06-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/dot-helpers/v3/overview/</loc>
-         <lastmod>2024-05-03</lastmod>
+         <lastmod>2024-06-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
