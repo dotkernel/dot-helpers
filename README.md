@@ -6,8 +6,8 @@
 
 ## dot-helpers badges
 
-![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-helpers)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-helpers/3.4.3)
+![OSS Lifecycle](https://img.shields.io/osslifecycle.svg?file_url=https%3A%2F%2Fraw.githubusercontent.com%2Fdotkernel%2Fdot-helpers%2FHEAD%2FOSSMETADATA)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-helpers/3.6.0)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-helpers)](https://github.com/dotkernel/dot-helpers/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-helpers)](https://github.com/dotkernel/dot-helpers/network)
@@ -17,8 +17,6 @@
 [![Build Static](https://github.com/dotkernel/dot-helpers/actions/workflows/continuous-integration.yml/badge.svg?branch=3.0)](https://github.com/dotkernel/dot-helpers/actions/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/dotkernel/dot-helpers/graph/badge.svg?token=LIN5FVL5QP)](https://codecov.io/gh/dotkernel/dot-helpers)
 
-[![SymfonyInsight](https://insight.symfony.com/projects/e79c1b2a-c61f-4ce6-9b6f-9c6528e049c6/big.svg)](https://insight.symfony.com/projects/e79c1b2a-c61f-4ce6-9b6f-9c6528e049c6)
-
 ## Requirements
 
 - PHP >= 8.1
@@ -27,7 +25,9 @@
 
 Install dot-helpers in your application by running the following command:
 
-    composer require dotkernel/dot-helpers
+```shell
+composer require dotkernel/dot-helpers
+```
 
 Next, register the package's `ConfigProvider` to your application config.
 
