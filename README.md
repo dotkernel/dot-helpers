@@ -5,7 +5,7 @@
 ## dot-helpers badges
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-helpers)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-helpers/3.7.0)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-helpers/3.7.1)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-helpers)](https://github.com/dotkernel/dot-helpers/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-helpers)](https://github.com/dotkernel/dot-helpers/network)
@@ -17,7 +17,7 @@
 
 ## Requirements
 
-- PHP >= 8.1
+- **PHP**: 8.1, 8.2, 8.3, or 8.4
 
 ## Install
 
@@ -29,4 +29,4 @@ composer require dotkernel/dot-helpers
 
 Next, register the package's `ConfigProvider` to your application config.
 
-Note : Make sure to register the package under the `// DK packages` section.
+> Make sure to register the package under the `// DK packages` section.
