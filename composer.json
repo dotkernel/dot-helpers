@@ -30,8 +30,9 @@
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "^3.0",
-        "phpunit/phpunit": "^10.5.9",
-        "vimeo/psalm": "^6.0"
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpunit/phpunit": "^10.5.9"
     },
     "autoload": {
         "psr-4": {
@@ -52,7 +53,6 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
-        "static-analysis": "psalm --shepherd --stats"
+        "static-analysis": "phpstan analyse --memory-limit 1G"
     }
 }

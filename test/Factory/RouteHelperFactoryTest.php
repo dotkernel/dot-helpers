@@ -58,6 +58,6 @@ class RouteHelperFactoryTest extends TestCase
 
         $routeHelper = (new RouteHelperFactory())($this->containerInterface);
 
-        $this->assertInstanceOf(RouteHelper::class, $routeHelper);
+        $this->assertSame(RouteHelper::class, $routeHelper::class);
     }
 }

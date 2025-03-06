@@ -36,9 +36,9 @@ class RouteHelperTest extends TestCase
         $specs['options']      = ['test'];
 
         $generateUri = $this->routeHelper->generateUri($specs);
-        $this->assertInstanceOf(UriInterface::class, $generateUri);
+        $this->assertContainsOnlyInstancesOf(UriInterface::class, [$generateUri]);
         $generateUri = $this->routeHelper->generateUri($specs, true);
-        $this->assertInstanceOf(UriInterface::class, $generateUri);
+        $this->assertContainsOnlyInstancesOf(UriInterface::class, [$generateUri]);
     }
 
     /**
@@ -71,7 +71,7 @@ class RouteHelperTest extends TestCase
         $newUri = $this->routeHelper->appendQueryParam($uri, 'test', 'testing');
         $query  = $newUri->getQuery();
 
-        $this->assertInstanceOf(UriInterface::class, $newUri);
+        $this->assertContainsOnlyInstancesOf(UriInterface::class, [$newUri]);
         $this->assertEquals('test=testing', $query);
     }
 }
