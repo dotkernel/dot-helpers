@@ -22,7 +22,6 @@ Documentation is available at: https://docs.dotkernel.org/dot-helpers/.
 [![codecov](https://codecov.io/gh/dotkernel/dot-helpers/graph/badge.svg?token=LIN5FVL5QP)](https://codecov.io/gh/dotkernel/dot-helpers)
 [![PHPStan](https://github.com/dotkernel/dot-helpers/actions/workflows/static-analysis.yml/badge.svg?branch=3.0)](https://github.com/dotkernel/dot-helpers/actions/workflows/static-analysis.yml)
 
-
 ## Requirements
 
 - **PHP**: 8.1, 8.2, 8.3, or 8.4
