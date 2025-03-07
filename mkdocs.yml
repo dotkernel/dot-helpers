@@ -12,7 +12,7 @@ nav:
       - Installation: v3/installation.md
       - Configuration: v3/configuration.md
 site_name: dot-helpers
-site_description: "DotKernel's component used to handle urls"
+site_description: "Dotkernel's component used to handle urls"
 repo_url: "https://github.com/dotkernel/dot-helpers"
 plugins:
   - search
