@@ -22,11 +22,11 @@
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-        "psr/http-message": "^1.0 || ^2.0",
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "laminas/laminas-diactoros": "^3.3.0",
         "laminas/laminas-servicemanager": "^3.22.1 || ^4.0",
         "mezzio/mezzio-helpers": "^5.16.0",
-        "laminas/laminas-diactoros": "^3.3.0"
+        "psr/http-message": "^1.0 || ^2.0"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "^3.0",
@@ -52,7 +52,7 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "test": "phpunit --colors=always",
-        "static-analysis": "phpstan analyse --memory-limit 1G"
+        "static-analysis": "phpstan analyse --memory-limit 1G",
+        "test": "phpunit --colors=always"
     }
 }
