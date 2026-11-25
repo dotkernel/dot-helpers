@@ -9,11 +9,27 @@ use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Helper\UrlHelper;
 use Psr\Http\Message\UriInterface;
 
-use function array_merge;
+use function explode;
 use function http_build_query;
-use function parse_str;
-use function urlencode;
+use function implode;
+use function urldecode;
 
+use const PHP_QUERY_RFC3986;
+
+/**
+ * @phpstan-type RouteOptions array{
+ *     router?: array<array-key, mixed>,
+ *     reuse_result_params?: bool,
+ *     reuse_query_params?: bool,
+ * }
+ * @phpstan-type RouteSpecs array{
+ *     route_name?: non-empty-string|null,
+ *     route_params?: array<string, mixed>,
+ *     query_params?: array<string, mixed>,
+ *     fragment_id?: string|null,
+ *     options?: RouteOptions,
+ * }
+ */
 class RouteHelper
 {
     protected UrlHelper $urlHelper;
@@ -26,6 +42,9 @@ class RouteHelper
         $this->serverUrlHelper = $serverUrlHelper;
     }
 
+    /**
+     * @param RouteSpecs $specs
+     */
     public function generateUri(array $specs, bool $absolute = false): UriInterface
     {
         $routeName          = $specs['route_name'] ?? null;
@@ -42,6 +61,9 @@ class RouteHelper
         return new Uri($uri);
     }
 
+    /**
+     * Compare scheme, host, port and path. The query, the fragment and the user info are ignored.
+     */
     public function uriEquals(UriInterface $uri1, UriInterface $uri2): bool
     {
         return $uri1->getScheme() === $uri2->getScheme()
@@ -50,20 +72,33 @@ class RouteHelper
             && $uri1->getPort() === $uri2->getPort();
     }
 
+    /**
+     * Add the parameter to the end of the query. If the query has parameters with the same name,
+     * replace the first one in its position and remove the others. Other parameters stay unchanged.
+     */
     public function appendQueryParam(UriInterface $uri, string $name, string $value): UriInterface
     {
-        $query = $uri->getQuery();
-        $arr   = [];
-
-        if (! empty($query)) {
-            parse_str($query, $arr);
+        $param    = http_build_query([$name => $value], '', '&', PHP_QUERY_RFC3986);
+        $pairs    = [];
+        $replaced = false;
+        foreach (explode('&', $uri->getQuery()) as $pair) {
+            if ($pair === '') {
+                continue;
+            }
+            if (urldecode(explode('=', $pair, 2)[0]) !== $name) {
+                $pairs[] = $pair;
+                continue;
+            }
+            if (! $replaced) {
+                $pairs[]  = $param;
+                $replaced = true;
+            }
+        }
+        if (! $replaced) {
+            $pairs[] = $param;
         }
 
-        $query = http_build_query(
-            array_merge($arr, [$name => urlencode($value)])
-        );
-
-        return $uri->withQuery($query);
+        return $uri->withQuery(implode('&', $pairs));
     }
 
     public function getUrlHelper(): UrlHelper

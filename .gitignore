@@ -33,6 +33,7 @@ fabric.properties
 composer.phar
 /vendor/
 .phpcs-cache
+.phpunit.cache
 .phpunit.result.cache
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
