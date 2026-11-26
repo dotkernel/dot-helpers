@@ -22,8 +22,8 @@ class RouteHelperTest extends TestCase
     protected function setup(): void
     {
         $this->routeHelper = new RouteHelper(
-            $this->createMock(UrlHelper::class),
-            $this->createMock(ServerUrlHelper::class)
+            $this->createStub(UrlHelper::class),
+            $this->createStub(ServerUrlHelper::class)
         );
     }
 
@@ -46,8 +46,8 @@ class RouteHelperTest extends TestCase
      */
     public function testUriEquals(): void
     {
-        $uri1 = $this->createMock(UriInterface::class);
-        $uri2 = $this->createMock(UriInterface::class);
+        $uri1 = $this->createStub(UriInterface::class);
+        $uri2 = $this->createStub(UriInterface::class);
 
         $uri1->method('getScheme')->willReturn('test');
         $uri2->method('getScheme')->willReturn('test');

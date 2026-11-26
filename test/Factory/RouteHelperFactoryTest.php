@@ -9,7 +9,7 @@ use Dot\Helpers\Route\RouteHelper;
 use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Helper\UrlHelper;
 use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -18,14 +18,14 @@ use TypeError;
 
 class RouteHelperFactoryTest extends TestCase
 {
-    private ContainerInterface|MockObject $containerInterface;
+    private ContainerInterface|Stub $containerInterface;
 
     /**
      * @throws Exception
      */
     public function setUp(): void
     {
-        $this->containerInterface = $this->createMock(ContainerInterface::class);
+        $this->containerInterface = $this->createStub(ContainerInterface::class);
     }
 
     /**
@@ -52,8 +52,8 @@ class RouteHelperFactoryTest extends TestCase
     public function testWillCreateWithParams(): void
     {
         $this->containerInterface->method('get')->willReturnMap([
-            [UrlHelper::class, $this->createMock(UrlHelper::class)],
-            [ServerUrlHelper::class, $this->createMock(ServerUrlHelper::class)],
+            [UrlHelper::class, $this->createStub(UrlHelper::class)],
+            [ServerUrlHelper::class, $this->createStub(ServerUrlHelper::class)],
         ]);
 
         $routeHelper = (new RouteHelperFactory())($this->containerInterface);
