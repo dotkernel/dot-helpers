@@ -4,60 +4,60 @@ declare(strict_types=1);
 
 namespace DotTest\Helpers\Factory;
 
+use Dot\Helpers\Exception\RuntimeException;
 use Dot\Helpers\Factory\RouteHelperFactory;
-use Dot\Helpers\Route\RouteHelper;
+use DotTest\Helpers\TestData\Container;
+use DotTest\Helpers\TestData\Router;
+use DotTest\Helpers\TestData\ServiceNotFoundException;
 use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Helper\UrlHelper;
-use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\ContainerInterface;
-use Psr\Container\NotFoundExceptionInterface;
-use TypeError;
+use stdClass;
 
 class RouteHelperFactoryTest extends TestCase
 {
-    private ContainerInterface|MockObject $containerInterface;
-
-    /**
-     * @throws Exception
-     */
-    public function setUp(): void
+    public function testCreatesRouteHelperWithServicesFromContainer(): void
     {
-        $this->containerInterface = $this->createMock(ContainerInterface::class);
+        $urlHelper       = new UrlHelper(new Router([]));
+        $serverUrlHelper = new ServerUrlHelper();
+
+        $routeHelper = (new RouteHelperFactory())(new Container([
+            UrlHelper::class       => $urlHelper,
+            ServerUrlHelper::class => $serverUrlHelper,
+        ]));
+
+        $this->assertSame($urlHelper, $routeHelper->getUrlHelper());
+        $this->assertSame($serverUrlHelper, $routeHelper->getServerUrlHelper());
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
-    public function testWillNotCreateWithoutParams(): void
+    public function testThrowsWhenUrlHelperHasWrongType(): void
     {
-        $this->containerInterface->method('get')->willReturnMap([
-            [UrlHelper::class, null],
-            [ServerUrlHelper::class, null],
-        ]);
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage(
+            'Service "Mezzio\Helper\UrlHelper" must be an instance of "Mezzio\Helper\UrlHelper", "null" given.'
+        );
 
-        $this->expectException(TypeError::class);
-
-        (new RouteHelperFactory())($this->containerInterface);
+        (new RouteHelperFactory())(new Container([
+            UrlHelper::class       => null,
+            ServerUrlHelper::class => new ServerUrlHelper(),
+        ]));
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws Exception
-     * @throws NotFoundExceptionInterface
-     */
-    public function testWillCreateWithParams(): void
+    public function testThrowsWhenServerUrlHelperHasWrongType(): void
     {
-        $this->containerInterface->method('get')->willReturnMap([
-            [UrlHelper::class, $this->createMock(UrlHelper::class)],
-            [ServerUrlHelper::class, $this->createMock(ServerUrlHelper::class)],
-        ]);
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('"stdClass" given.');
 
-        $routeHelper = (new RouteHelperFactory())($this->containerInterface);
+        (new RouteHelperFactory())(new Container([
+            UrlHelper::class       => new UrlHelper(new Router([])),
+            ServerUrlHelper::class => new stdClass(),
+        ]));
+    }
 
-        $this->assertSame(RouteHelper::class, $routeHelper::class);
+    public function testContainerExceptionIsNotCaught(): void
+    {
+        $this->expectException(ServiceNotFoundException::class);
+
+        (new RouteHelperFactory())(new Container());
     }
 }

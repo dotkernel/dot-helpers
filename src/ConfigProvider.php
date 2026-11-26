@@ -9,6 +9,9 @@ use Dot\Helpers\Route\RouteHelper;
 
 class ConfigProvider
 {
+    /**
+     * @return array{dependencies: array{factories: array<class-string, class-string>}}
+     */
     public function __invoke(): array
     {
         return [
@@ -16,6 +19,9 @@ class ConfigProvider
         ];
     }
 
+    /**
+     * @return array{factories: array<class-string, class-string>}
+     */
     public function getDependencyConfig(): array
     {
         return [

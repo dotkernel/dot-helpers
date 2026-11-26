@@ -5,26 +5,24 @@ declare(strict_types=1);
 namespace DotTest\Helpers;
 
 use Dot\Helpers\ConfigProvider;
+use Dot\Helpers\Factory\RouteHelperFactory;
 use Dot\Helpers\Route\RouteHelper;
 use PHPUnit\Framework\TestCase;
 
 class ConfigProviderTest extends TestCase
 {
-    protected array $config;
-
-    protected function setup(): void
+    public function testInvokeReturnsDependencyConfig(): void
     {
-        $this->config = (new ConfigProvider())();
+        $configProvider = new ConfigProvider();
+
+        $this->assertSame(['dependencies' => $configProvider->getDependencyConfig()], $configProvider());
     }
 
-    public function testHasDependencies(): void
+    public function testRouteHelperUsesRouteHelperFactory(): void
     {
-        $this->assertArrayHasKey('dependencies', $this->config);
-    }
-
-    public function testDependenciesHasFactories(): void
-    {
-        $this->assertArrayHasKey('factories', $this->config['dependencies']);
-        $this->assertArrayHasKey(RouteHelper::class, $this->config['dependencies']['factories']);
+        $this->assertSame(
+            ['factories' => [RouteHelper::class => RouteHelperFactory::class]],
+            (new ConfigProvider())->getDependencyConfig()
+        );
     }
 }
