@@ -18,9 +18,9 @@ Documentation is available at: https://docs.dotkernel.org/dot-helpers/.
 [![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-helpers)](https://github.com/dotkernel/dot-helpers/stargazers)
 [![GitHub license](https://img.shields.io/github/license/dotkernel/dot-helpers)](https://github.com/dotkernel/dot-helpers/blob/3.0/LICENSE.md)
 
-[![Build Static](https://github.com/dotkernel/dot-helpers/actions/workflows/continuous-integration.yml/badge.svg?branch=3.0)](https://github.com/dotkernel/dot-helpers/actions/workflows/continuous-integration.yml)
+[![Build Static](https://github.com/dotkernel/dot-helpers/actions/workflows/continuous-integration.yml/badge.svg?branch=3.x)](https://github.com/dotkernel/dot-helpers/actions/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/dotkernel/dot-helpers/graph/badge.svg?token=LIN5FVL5QP)](https://codecov.io/gh/dotkernel/dot-helpers)
-[![PHPStan](https://github.com/dotkernel/dot-helpers/actions/workflows/static-analysis.yml/badge.svg?branch=3.0)](https://github.com/dotkernel/dot-helpers/actions/workflows/static-analysis.yml)
+[![PHPStan](https://github.com/dotkernel/dot-helpers/actions/workflows/static-analysis.yml/badge.svg?branch=3.x)](https://github.com/dotkernel/dot-helpers/actions/workflows/static-analysis.yml)
 
 ## Requirements
 
